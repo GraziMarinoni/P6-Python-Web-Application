@@ -1,0 +1,131 @@
+body {
+  background-color: lightslategrey;
+  width: 80%;
+  margin: auto;
+  min-width: 1000px;
+}
+
+.navbar {
+  font-size: 30px;
+  background-image: linear-gradient(to right, #c70039, #900c3f);
+  height: 60px;
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+.navbar_text {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0px 20px;
+}
+
+.navbar-btn {
+  margin: 0px 5px;
+  padding: 7px 15px;
+  border-radius: 15px;
+  background-color: #4a0c37;
+  color: white;
+}
+
+#play-btn {
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-size: 18px;
+  padding: 2px 5px;
+  border-radius: 8px;
+  border-color: #900c3f;
+  margin-left: 10px;
+  color: #c70039;
+  z-index: 5;
+}
+
+.category {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  /*   background-color: #4a0c37; */
+  align-items: center;
+}
+
+.img-slide {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slide-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-size: 45px;
+}
+
+#top-movie_texts {
+  position: absolute;
+  top: 200px;
+  left: 270px;
+  padding: 15px;
+  background: rgba(239, 230, 240, 0.2);
+  width: 30%;
+  border-radius: 15px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  z-index: 5;
+  margin: auto;
+}
+
+#top-movie {
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  justify-items: center;
+}
+
+#top-movie-paragraph {
+  font-family: sans-serif;
+  margin: 10px;
+}
+
+#top-movie-title {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 26px;
+  margin: 10px;
+}
+
+#top-movie-img {
+  z-index: 5;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.category_title {
+  color: black;
+}
+
+#popup-window {
+  position: fixed;
+  width: 70%;
+  height: 300px;
+  background: grey;
+  border: 1px solid black;
+  padding: 10px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+}
