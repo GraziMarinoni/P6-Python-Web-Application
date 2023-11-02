@@ -16,68 +16,175 @@ const fetchData = async (url) => {
   return data;
 };
 
-const fetchPages = async (url) => {
+const fetchPages = async (url, cat_name) => {
   let allData = [];
   let data = await fetchData(url);
   allData = allData.concat(data.results);
   while (data.next !== null) {
-    const parsedUrl = new URL(url);
-    let nextPage = parseInt(parsedUrl.searchParams.get("page"));
+    const nextUrl = new URL(url);
+    let nextPage = parseInt(nextUrl.searchParams.get("page"));
     nextPage++;
-    parsedUrl.searchParams.set("page", nextPage);
-    url = parsedUrl.toString(); // Update the url variable with the modified URL
+    nextUrl.searchParams.set("page", nextPage);
+    url = nextUrl.toString(); // Update the url variable with the modified URL
     data = await fetchData(url);
     allData = allData.concat(data.results);
   }
   const sortedList = allData
     .sort((a, z) => parseFloat(z.imdb_score) - parseFloat(a.imdb_score))
-    .slice(1, 8);
+    .slice(0, 7);
   const imgURL = sortedList.map((item) => item.image_url);
-  console.log(imgURL);
-  return imgURL;
+
+    function carousel(imgURL, cat_name) {
+
+    const carousel_main = document.createElement("div");
+    const carousel_title = document.createElement("h2");
+    const carousel_container = document.createElement("div");
+    const prev_btn = document.createElement("button");
+    const carousel = document.createElement("div");
+    const next_btn = document.createElement("button");
+
+    carousel_title.textContent = cat_name;
+    carousel_title.classList.add("category_title");
+    carousel_container.classList.add("carousel-container");
+    carousel.classList.add("carousel");
+    carousel.setAttribute("id",  cat_name);
+
+    prev_btn.classList.add("arrow", "prev");
+    prev_btn.setAttribute("id", "previous" + cat_name);
+    prev_btn.innerHTML = '&#10094;';
+    // prev_btn.innerHTML='<i class="fa-solid fa-circle-chevron-right"></i>';
+
+    next_btn.classList.add("arrow", "next");
+    next_btn.setAttribute("id", "next" + cat_name);
+    next_btn.innerHTML = '&#10095;';
+
+    carousel_container.appendChild(prev_btn);
+    carousel_container.appendChild(carousel);
+    carousel_container.appendChild(next_btn);
+    carousel_main.appendChild(carousel_title);
+    carousel_main.appendChild(carousel_container);
+
+    document.getElementById("categories").appendChild(carousel_main);
+    // const carousel = document.querySelector("div.carousel");
+
+    for (let url of imgURL) {
+        const new_img = document.createElement("img");
+        new_img.src = url;
+        new_img.classList.add("img");
+        carousel.appendChild(new_img);
+    }
+
+    let currentSlide = 0;
+    const slidesToShow = 0.7;
+    const slideWidth = 25;
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll(".img");
+        currentSlide = (n + slides.length) % slides.length;
+        const offset = -currentSlide * (slidesToShow * slideWidth);
+        document.getElementById(
+            cat_name
+        ).style.transform = `translateX(${offset}%)`;
+    }
+
+    const previous = document.getElementById("previous" + cat_name);
+    previous.addEventListener("click", function () {
+        showSlide(currentSlide - 1);
+    });
+
+    const next = document.getElementById("next" + cat_name);
+    next.addEventListener("click", function () {
+        showSlide(currentSlide + 1);
+    });
+
+    // Initial display
+    showSlide(currentSlide);
+
+}
+
+carousel(imgURL,cat_name);
+
 };
 
+
+
+
 const top_movie = fetchData(topMovieURL).then((data) => {
-  // console.log(data)
   const top_movie_request = fetchData(data.results[0]["url"]).then(
     (top_movie_data) => {
+      const pop_window = document.getElementById("popup-window");
+      const details = document.querySelector("ul.top_movie_details");
+      const pop_window_details = [
+        top_movie_data["title"],
+        top_movie_data["genres"],
+        top_movie_data["date_published"],
+        top_movie_data["rated"],
+        top_movie_data["imdb_score"],
+        top_movie_data["directors"],
+        top_movie_data["actors"],
+        top_movie_data["duration"],
+        top_movie_data["countries"],
+        top_movie_data["usa_gross_income"] +
+          top_movie_data["worldwide_gross_income"],
+        top_movie_data["description"],
+      ];
+      const pop_window_headers = [
+        "Title",
+        "Full Genre",
+        "Release date",
+        "MPAA rating",
+        "IMDb score",
+        "Director",
+        "List of actors",
+        "Duration",
+        "Country of origin",
+        "Box Office result",
+        "Movie summary",
+      ];
+
+      const best_movie_img = document.createElement("img");
+      best_movie_img.src = top_movie_data["image_url"];
+      pop_window.appendChild(best_movie_img);
+
+      for (let detail in pop_window_details) {
+        const item = document.createElement("li");
+        const text = document.createElement("p");
+        text.textContent =
+          pop_window_headers[detail] + " : " + pop_window_details[detail];
+        item.appendChild(text);
+        details.appendChild(item);
+      }
+
       const top_movie_image = document.getElementById("top-movie-img");
       const top_movie_title = document.getElementById("top-movie-title");
       const top_movie_paragraph = document.getElementById(
         "top-movie-paragraph"
       );
 
+      const top_movie_details = document.querySelector("ul.top_movie_details");
+
       top_movie_title.textContent = top_movie_data["title"];
       top_movie_paragraph.textContent = top_movie_data["description"];
       top_movie_image.src = top_movie_data["image_url"];
+
+      const window_container = document.getElementById(
+        "popup-window-container"
+      );
+
+      const close_btn = document.getElementById("close-btn");
+      const play_btn = document.getElementById("play-btn");
+
+      play_btn.addEventListener("click", function () {
+        window_container.style.display = "block";
+      });
+      close_btn.addEventListener("click", function () {
+        window_container.style.display = "none";
+      });
     }
   );
 });
 
-const top_seven = fetchPages(topSevenURL).then((imgURL) => {
-  const seven_img = document.querySelector("ul.img-slide");
-  for (let url of imgURL) {
-    const new_lst = document.createElement("li");
-    const new_img = document.createElement("img");
-
-    Object.assign(new_img, {
-      src: url,
-    });
-    new_lst.appendChild(new_img);
-    seven_img.appendChild(new_lst);
-  }
-});
-
-// Get the elements by their ID
-const playButton = document.getElementsByTagName("button");
-const popupWindow = document.getElementById("popup-window");
-const closeButton = document.getElementById("close-button");
-// Show the pop-up window when the link is clicked
-playButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  popupWindow.style.display = "block";
-});
-// Hide the pop-up window when the close button is clicked
-closeButton.addEventListener("click", function () {
-  popupWindow.style.display = "none";
-});
+fetchPages(topSevenURL, "Top Seven Rated Movies");
+fetchPages(topAdventureURL, "Top Seven Adventure Movies");
+fetchPages(topActionURL, "Top Seven Action Movies");
+fetchPages(topRomanceURL, "Top Seven Romance Movies");

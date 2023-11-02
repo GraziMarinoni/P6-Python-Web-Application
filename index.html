@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JustStreamIT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fjalla+One|Libre+Baskerville"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/javascript" src="script.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>JustStreamIT</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One|Libre+Baskerville" />
-  <link href="style.css" rel="stylesheet" />
-  <script type="text/javascript" src="script.js"></script>
-</head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar_text">
+        <button class="navbar-btn">Home</button>
+        <button class="navbar-btn">Categories</button>
+      </div>
+      <img
+        style="float: left"
+        src="https://user.oc-static.com/upload/2020/09/18/16004298835178_P5.png"
+        height="68px"
+       alt=""/>
+    </nav>
 
-<body>
-  <nav class="navbar">
-    <div class="navbar_text">
-      <button class="navbar-btn">Home</button>
-      <button class="navbar-btn">Categories</button>
-    </div>
-    <img style="float: left" src="https://user.oc-static.com/upload/2020/09/18/16004298835178_P5.png" height="68px" />
-  </nav>
+    <div id="top-movie">
+      <img id="top-movie-img" src="" height="600px" width="70%"  alt=""/>
 
-  <div id="top-movie">
-    <img id="top-movie-img" src="" height="600px" width="70%" />
+      <div id="top-movie_texts">
+        <h3 id="top-movie-title"></h3>
+        <p id="top-movie-paragraph"></p>
+        <button id="play-btn">Play <i class="fa fa-play-circle"></i></button>
 
-    <div id="top-movie_texts">
-      <h3 id="top-movie-title"></h3>
-      <p id="top-movie-paragraph"></p>
-      <button id="play-btn">Play <i class="fa fa-play-circle"></i></button>
-
-      <div id="popup-window">
-        <h1>Pop-up Window</h1>
-        <p>This is a pop-up window.</p>
-        <button id="close-button">Close</button>
+        <div id="popup-window-container">
+          <div id="popup-window">
+            <img src="" alt="" />
+            <ul class="top_movie_details" style="list-style-type: none"></ul>
+          </div>
+          <button id="close-btn">Close</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h3 class="category_title">Top-rated Movies</h3>
-    <div class="category">
-      <button class="slide-btn">
-        <i class="fa fa-arrow-circle-left"></i>
-      </button>
-      <ul class="img-slide"></ul>
-      <button class="slide-btn">
-        <i class="fa fa-arrow-circle-right"></i>
-      </button>
-    </div>
-  </div>
-  <script src="script.js"></script>
-</body>
 
+    <div id="categories"></div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

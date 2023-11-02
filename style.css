@@ -1,5 +1,5 @@
 body {
-  background-color: lightslategrey;
+  background-color: #111120;
   width: 80%;
   margin: auto;
   min-width: 1000px;
@@ -111,15 +111,19 @@ body {
 }
 
 .category_title {
-  color: black;
+  color: white;
 }
 
 #popup-window {
+  display: flex;
+}
+
+#popup-window-container {
   position: fixed;
+  border-radius: 15px;
   width: 70%;
-  height: 300px;
+  height: 500px;
   background: grey;
-  border: 1px solid black;
   padding: 10px;
   margin: auto;
   top: 0;
@@ -128,4 +132,46 @@ body {
   left: 0;
   z-index: 10;
   display: none;
+}
+
+.carousel-container {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.1s ease-in-out;
+
+}
+
+.img {
+  width: 50%;
+  height: 400px;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 21;
+}
+
+.prev {
+  left: -10px;
+}
+
+.next {
+  right: 0px;
 }
