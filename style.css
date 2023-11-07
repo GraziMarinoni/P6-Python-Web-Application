@@ -3,18 +3,19 @@ body {
   width: 80%;
   margin: auto;
   min-width: 1000px;
+  padding: 15px;
 }
 
 .navbar {
   font-size: 30px;
-  background-image: linear-gradient(to right, #c70039, #900c3f);
-  height: 60px;
+  background-image: linear-gradient(to right, #ef4be6e3, #a80443);
+  height: 80px;
   display: flex;
   flex-flow: row-reverse nowrap;
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  margin-top: 15px;
+  margin-bottom: 50px;
   padding-top: 5px;
 }
 
@@ -22,26 +23,33 @@ body {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin: 0px 20px;
+  margin: 0 20px;
 }
 
 .navbar-btn {
   margin: 0px 5px;
-  padding: 7px 15px;
+  padding: 10px 20px;
   border-radius: 15px;
+  font-family: sans-serif;
   background-color: #4a0c37;
   color: white;
+  font-size: 19px;
+}
+#btn-container{
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 #play-btn {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  font-size: 18px;
-  padding: 2px 5px;
-  border-radius: 8px;
-  border-color: #900c3f;
-  margin-left: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 15px 15px 0;
+  padding: 10px 25px;
+  border-radius: 12px;
+  border: 5px solid #900c3f;
   color: #c70039;
   z-index: 5;
 }
@@ -74,7 +82,7 @@ body {
 
 #top-movie_texts {
   position: absolute;
-  top: 200px;
+  top: 280px;
   left: 270px;
   padding: 15px;
   background: rgba(239, 230, 240, 0.2);
@@ -95,22 +103,27 @@ body {
 
 #top-movie-paragraph {
   font-family: sans-serif;
+  font-size: 20px;
   margin: 10px;
 }
 
 #top-movie-title {
   font-family: "Fjalla One", sans-serif;
-  font-size: 26px;
-  margin: 10px;
+  font-size: 30px;
+  margin: 10px 10px 20px 10px;
 }
 
 #top-movie-img {
   z-index: 5;
   border-radius: 15px;
   margin: auto;
+  height: 800px;
+  width: 70%;
 }
 
 .category_title {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 30px;
   color: white;
 }
 
@@ -136,7 +149,7 @@ body {
 
 .carousel-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: hidden;
   position: relative;
 }
@@ -147,11 +160,10 @@ body {
 
 }
 
-.img {
-  width: 50%;
-  height: 400px;
+#logo {
+  float: left;
+  height: 90px;
   object-fit: cover;
-  margin: 0 10px;
 }
 
 .arrow {
