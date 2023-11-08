@@ -2,9 +2,9 @@ const topMovieURL =
   "http://localhost:8000/api/v1/titles/?imdb_score_min=9.6&sort_by=-votes";
 const topSevenURL =
   "http://localhost:8000/api/v1/titles/?imdb_score_min=9.3&sort_by=-votes&page=1";
-const topAdventureURL =
+const topComedyURL =
   "http://localhost:8000/api/v1/titles/?imdb_score_min=8.8&genre=comedy&page=1";
-const topActionURL =
+const topDramaURL =
   "http://localhost:8000/api/v1/titles/?imdb_score_min=8.8&genre=drama&page=1";
 const topRomanceURL =
   "http://localhost:8000/api/v1/titles/?imdb_score_min=8.8&genre=romance&page=1";
@@ -12,14 +12,12 @@ const topRomanceURL =
 // submits a fetch request to the API for one page of results
 const fetchData = async (url) => {
   const response = await fetch(url);
-  const data = await response.json();
-  // console.log(data);
-  return data;
+  return await response.json();
 };
 
 // submits a fetch request to the API for multiple pages
 // and create the required elements for the categories
-const fetchPages = async (url, cat_name) => {
+const fetchPages = async (url, cat_name, start, end) => {
   let allData = [];
   let data = await fetchData(url);
   allData = allData.concat(data.results);
@@ -34,8 +32,9 @@ const fetchPages = async (url, cat_name) => {
   }
   const sortedList = allData
     .sort((a, z) => parseFloat(z.imdb_score) - parseFloat(a.imdb_score))
-    .slice(0, 7); // sort the results by IMDB score and returns 7 of them;
+    .slice(start, end); // sort the results by IMDB score and returns 7 of them;
   const imgURL = sortedList.map((item) => item.image_url);
+
 
   // creates the HTMl elements and append them to the body
     function carousel(imgURL, cat_name) {
@@ -49,7 +48,7 @@ const fetchPages = async (url, cat_name) => {
 
     carousel_title.textContent = cat_name;
     carousel_title.classList.add("category_title");
-    carousel_container.classList.add("carousel-container");
+    carousel_container.classList.add("container");
     carousel.classList.add("carousel");
     carousel.setAttribute("id",  cat_name);
 
@@ -84,7 +83,7 @@ const fetchPages = async (url, cat_name) => {
 
     let currentSlide = 0;
     const slidesToShow = 0.5;
-    const slideWidth = 15;
+    const slideWidth = 36;
 
 
     // controls the slideshow
@@ -153,6 +152,7 @@ const top_movie = fetchData(topMovieURL).then((data) => {
       ];
 
       const best_movie_img = document.createElement("img");
+      best_movie_img.classList.add("popup_img");
       best_movie_img.src = top_movie_data["image_url"];
       pop_window.appendChild(best_movie_img);
 
@@ -177,6 +177,7 @@ const top_movie = fetchData(topMovieURL).then((data) => {
       top_movie_paragraph.textContent = top_movie_data["description"];
       top_movie_image.src = top_movie_data["image_url"];
 
+
       const window_container = document.getElementById(
         "popup-window-container"
       );
@@ -195,7 +196,8 @@ const top_movie = fetchData(topMovieURL).then((data) => {
 });
 
 
-fetchPages(topActionURL, "Drama");
-fetchPages(topSevenURL, "Top-Rated");
-fetchPages(topAdventureURL, "Comedy");
-fetchPages(topRomanceURL, "Romance");
+
+fetchPages(topSevenURL, "Top-Rated", 1,8);
+fetchPages(topComedyURL, "Comedy",0,7);
+fetchPages(topDramaURL, "Drama",0,7);
+fetchPages(topRomanceURL, "Romance", 0, 7);

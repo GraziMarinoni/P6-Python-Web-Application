@@ -27,7 +27,7 @@ body {
 }
 
 .navbar-btn {
-  margin: 0px 5px;
+  margin: 0 5px;
   padding: 10px 20px;
   border-radius: 15px;
   font-family: sans-serif;
@@ -35,6 +35,13 @@ body {
   color: white;
   font-size: 19px;
 }
+
+#logo {
+  float: left;
+  height: 90px;
+  object-fit: cover;
+}
+
 #btn-container{
   display: flex;
   flex-direction: row-reverse;
@@ -46,38 +53,12 @@ body {
   outline: none;
   font-size: 22px;
   font-weight: bold;
-  margin: 0 15px 15px 0;
+  margin: 15px 15px 15px 0;
   padding: 10px 25px;
   border-radius: 12px;
-  border: 5px solid #900c3f;
-  color: #c70039;
+  border: 5px solid #66104d;
+  color: #b11482;
   z-index: 5;
-}
-
-.category {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
-  /*   background-color: #4a0c37; */
-  align-items: center;
-}
-
-.img-slide {
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: row nowrap;
-  list-style-type: none;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.slide-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  font-size: 45px;
 }
 
 #top-movie_texts {
@@ -85,7 +66,7 @@ body {
   top: 280px;
   left: 270px;
   padding: 15px;
-  background: rgba(239, 230, 240, 0.2);
+  background: rgba(239, 230, 240, 0.4);
   width: 30%;
   border-radius: 15px;
   color: white;
@@ -95,7 +76,7 @@ body {
 }
 
 #top-movie {
-  margin-top: 15px;
+  margin: 50px 0 ;
   position: relative;
   display: flex;
   justify-items: center;
@@ -121,69 +102,121 @@ body {
   width: 70%;
 }
 
-.category_title {
-  font-family: "Fjalla One", sans-serif;
-  font-size: 30px;
-  color: white;
-}
-
 #popup-window {
   display: flex;
+  flex-direction: row-reverse;
+  padding: 20px 40px 0 0;
 }
 
 #popup-window-container {
   position: fixed;
   border-radius: 15px;
   width: 70%;
-  height: 500px;
-  background: grey;
-  padding: 10px;
+  min-width: 700px;
+  height: 520px;
+  background: #7b7bc2;
+  font-family: sans-serif;
+  font-size: 1em;
   margin: auto;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 25;
   display: none;
+  box-sizing: border-box;
 }
 
-.carousel-container {
-  width: 90%;
+#close-btn{
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+    border-radius: 15px;
+  font-family: sans-serif;
+  background-color: #4a0c37;
+  color: white;
+  font-size: 19px;
+  margin: 15px 15px 15px 0;
+  padding: 10px 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.popup_img{
+  width: 65%;
+  margin: 20px 0 20px 60px ;
+}
+
+.category {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.img-slide {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slide-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-size: 45px;
+}
+
+.category_title {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 30px;
+  color: white;
+}
+
+.container {
+  width: 85%;
   margin: 50px auto;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: row;
+    align-items: center;
+  justify-content: center;
 }
 
 .carousel {
   display: flex;
   transition: transform 0.1s ease-in-out;
-
-}
-
-#logo {
-  float: left;
-  height: 90px;
-  object-fit: cover;
+  margin-left: -10px;
 }
 
 .arrow {
   position: absolute;
   top: 50%;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  width: 50px;
+  height: 50px;
+  background-color: #c2c2fa;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
   cursor: pointer;
-  z-index: 21;
+  z-index: 10;
+  transform: translateY(-50%);
+  font-size: 30px;
 }
 
 .prev {
-  left: -10px;
+  left: 0; /* Adjust this value to control how far outside the carousel the arrow appears */
 }
 
 .next {
-  right: 0px;
+  right: 0; /* Adjust this value to control how far outside the carousel the arrow appears */
 }
