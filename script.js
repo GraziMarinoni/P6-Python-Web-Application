@@ -35,10 +35,8 @@ const fetchPages = async (url, cat_name, start, end) => {
     .slice(start, end); // sort the results by IMDB score and returns 7 of them;
   const imgURL = sortedList.map((item) => item.image_url);
 
-
   // creates the HTMl elements and append them to the body
-    function carousel(imgURL, cat_name) {
-
+  function carousel(imgURL, cat_name) {
     const carousel_main = document.createElement("div");
     const carousel_title = document.createElement("h2");
     const carousel_container = document.createElement("div");
@@ -50,15 +48,15 @@ const fetchPages = async (url, cat_name, start, end) => {
     carousel_title.classList.add("category_title");
     carousel_container.classList.add("container");
     carousel.classList.add("carousel");
-    carousel.setAttribute("id",  cat_name);
+    carousel.setAttribute("id", cat_name);
 
     prev_btn.classList.add("arrow", "prev");
     prev_btn.setAttribute("id", "previous" + cat_name);
-    prev_btn.innerHTML = '&#10094;';
+    prev_btn.innerHTML = "&#10094;";
 
     next_btn.classList.add("arrow", "next");
     next_btn.setAttribute("id", "next" + cat_name);
-    next_btn.innerHTML = '&#10095;';
+    next_btn.innerHTML = "&#10095;";
 
     carousel_container.appendChild(prev_btn);
     carousel_container.appendChild(carousel);
@@ -70,49 +68,46 @@ const fetchPages = async (url, cat_name, start, end) => {
 
     // append images url to display images in the carousel
     for (let url of imgURL) {
-        const new_img = document.createElement("img");
-        new_img.src = url;
-        new_img.classList.add(cat_name);
-        new_img.classList.add("img");
-        new_img.style.width = '50%';
-        new_img.style.height = '400px';
-        new_img.style.objectFit = 'cover';
-        new_img.style.margin = '0 13px';
-        carousel.appendChild(new_img);
+      const new_img = document.createElement("img");
+      new_img.src = url;
+      new_img.classList.add(cat_name);
+      new_img.classList.add("img");
+      new_img.style.width = "50%";
+      new_img.style.height = "400px";
+      new_img.style.objectFit = "cover";
+      new_img.style.margin = "0 13px";
+      carousel.appendChild(new_img);
     }
 
     let currentSlide = 0;
     const slidesToShow = 0.5;
     const slideWidth = 36;
 
-
     // controls the slideshow
     function showSlide(n) {
-
-        const slides = document.getElementsByClassName(cat_name);
-        currentSlide = (n + slides.length) % slides.length;
-        const offset = -currentSlide * (slidesToShow * slideWidth);
-        document.getElementById(
-            cat_name
-        ).style.transform = `translateX(${offset}%)`;
+      const slides = document.getElementsByClassName(cat_name);
+      currentSlide = (n + slides.length) % slides.length;
+      const offset = -currentSlide * (slidesToShow * slideWidth);
+      document.getElementById(
+        cat_name
+      ).style.transform = `translateX(${offset}%)`;
     }
 
     const previous = document.getElementById("previous" + cat_name);
     previous.addEventListener("click", function () {
-        showSlide(currentSlide - 1);
+      showSlide(currentSlide - 1);
     });
 
     const next = document.getElementById("next" + cat_name);
     next.addEventListener("click", function () {
-        showSlide(currentSlide + 1);
+      showSlide(currentSlide + 1);
     });
 
     // Initial display
     showSlide(currentSlide);
-}
+  }
 
-carousel(imgURL,cat_name);
-
+  carousel(imgURL, cat_name);
 };
 
 // submits a fetch request for the top movie and populate the main banner and pop-up window
@@ -177,7 +172,6 @@ const top_movie = fetchData(topMovieURL).then((data) => {
       top_movie_paragraph.textContent = top_movie_data["description"];
       top_movie_image.src = top_movie_data["image_url"];
 
-
       const window_container = document.getElementById(
         "popup-window-container"
       );
@@ -195,9 +189,14 @@ const top_movie = fetchData(topMovieURL).then((data) => {
   );
 });
 
+fetchPages(topSevenURL, "Top-Rated", 1, 8);
+
+setTimeout(() => {
+  fetchPages(topComedyURL, "Comedy", 0, 7);
+  fetchPages(topDramaURL, "Drama", 0, 7);
+  fetchPages(topRomanceURL, "Romance", 0, 7);
+}, 1000);
 
 
-fetchPages(topSevenURL, "Top-Rated", 1,8);
-fetchPages(topComedyURL, "Comedy",0,7);
-fetchPages(topDramaURL, "Drama",0,7);
-fetchPages(topRomanceURL, "Romance", 0, 7);
+
+

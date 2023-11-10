@@ -42,7 +42,7 @@ body {
   object-fit: cover;
 }
 
-#btn-container{
+#btn-container {
   display: flex;
   flex-direction: row-reverse;
 }
@@ -76,7 +76,7 @@ body {
 }
 
 #top-movie {
-  margin: 50px 0 ;
+  margin: 50px 0;
   position: relative;
   display: flex;
   justify-items: center;
@@ -127,11 +127,11 @@ body {
   box-sizing: border-box;
 }
 
-#close-btn{
+#close-btn {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-    border-radius: 15px;
+  border-radius: 15px;
   font-family: sans-serif;
   background-color: #4a0c37;
   color: white;
@@ -143,9 +143,9 @@ body {
   right: 0;
 }
 
-.popup_img{
+.popup_img {
   width: 65%;
-  margin: 20px 0 20px 60px ;
+  margin: 20px 0 20px 60px;
 }
 
 .category {
@@ -186,7 +186,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: row;
-    align-items: center;
+  align-items: center;
   justify-content: center;
 }
 
@@ -214,9 +214,11 @@ body {
 }
 
 .prev {
-  left: 0; /* Adjust this value to control how far outside the carousel the arrow appears */
+  left: 0;
+  /* Adjust this value to control how far outside the carousel the arrow appears */
 }
 
 .next {
-  right: 0; /* Adjust this value to control how far outside the carousel the arrow appears */
+  right: 0;
+  /* Adjust this value to control how far outside the carousel the arrow appears */
 }
