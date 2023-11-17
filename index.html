@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>JustStreamIT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="style.css" rel="stylesheet" />
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
   </head>
 
   <body>
     <nav class="navbar">
       <div class="navbar_text">
-        <button class="navbar-btn">Home</button>
-        <button class="navbar-btn">Categories</button>
+        <button onclick="goToSection('#')" class="navbar-btn">Home</button>
+        <button onclick="goToSection('#categories')" class="navbar-btn">Categories</button>
       </div>
+
       <img id="logo"
         src="https://user.oc-static.com/upload/2020/09/18/16004298835178_P5.png"
-       alt=""/>
+       alt="logo">
     </nav>
 
     <div id="top-movie">
-      <img id="top-movie-img" src="" alt=""/>
+      <img id="top-movie-img" src="#" alt="top movie image">
 
       <div id="top-movie_texts">
-        <h3 id="top-movie-title"></h3>
-        <p id="top-movie-paragraph"></p>
+        <p id="top-movie-title"> </p>
+        <p id="top-movie-paragraph"> </p>
         <div id="btn-container">
         <button id="play-btn">Play <i class="fa fa-play-circle"></i> </button>
       </div>
 
         <div id="popup-window-container">
           <div id="popup-window">
-            <img src="" alt="" />
+            <img src="#" alt="   ">
             <ul class="top_movie_details" style="list-style-type: none"></ul>
           </div>
           <button class="navbar-btn" id="close-btn">Close <i class="fa-solid fa-square-xmark" style="color: #a7bbdd;"></i> </button>
         </div>
       </div>
     </div>
-
-    <div id="categories"></div>
-
-    <script src="script.js"></script>
+     <div id="categories"></div>
   </body>
 </html>

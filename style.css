@@ -7,6 +7,9 @@ body {
 }
 
 .navbar {
+  /*overflow: hidden;*/
+  position: fixed;
+  top: 0;
   font-size: 30px;
   background-image: linear-gradient(to right, #ef4be6e3, #a80443);
   height: 80px;
@@ -15,8 +18,11 @@ body {
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: 50px;
+  margin: auto;
   padding-top: 5px;
+  width: 80%;
+  min-width: 1000px;
+  z-index: 31;
 }
 
 .navbar_text {
@@ -76,7 +82,7 @@ body {
 }
 
 #top-movie {
-  margin: 50px 0;
+  margin: 100px 0 100px 0;
   position: relative;
   display: flex;
   justify-items: center;
@@ -91,15 +97,17 @@ body {
 #top-movie-title {
   font-family: "Fjalla One", sans-serif;
   font-size: 30px;
+  font-weight: bold;
   margin: 10px 10px 20px 10px;
 }
 
 #top-movie-img {
-  z-index: 5;
+
   border-radius: 15px;
   margin: auto;
   height: 800px;
   width: 70%;
+  object-fit: fill;
 }
 
 #popup-window {
@@ -112,8 +120,9 @@ body {
   position: fixed;
   border-radius: 15px;
   width: 70%;
-  min-width: 700px;
+  min-width: 600px;
   height: 520px;
+  min-height: 490px;
   background: #7b7bc2;
   font-family: sans-serif;
   font-size: 1em;
@@ -145,6 +154,7 @@ body {
 
 .popup_img {
   width: 65%;
+  height: 440px;
   margin: 20px 0 20px 60px;
 }
 
@@ -162,6 +172,10 @@ body {
   list-style-type: none;
   justify-content: space-around;
   align-items: center;
+}
+
+#categories {
+  margin-top: 50px;
 }
 
 .slide-btn {
@@ -211,6 +225,7 @@ body {
   z-index: 10;
   transform: translateY(-50%);
   font-size: 30px;
+  overflow: auto;
 }
 
 .prev {
@@ -221,4 +236,14 @@ body {
 .next {
   right: 0;
   /* Adjust this value to control how far outside the carousel the arrow appears */
+}
+
+.Top-Rated,
+.Comedy,
+.Romance,
+.Drama {
+  height: 400px;
+  width: 100%;
+  object-fit: fill;
+  margin: 0 18px;
 }
