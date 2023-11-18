@@ -129,8 +129,6 @@ function carousel(imgURL, cat_name) {
     showSlide(currentSlide);
   }
 
-
-
 // submits a fetch request for the top movie and populate the main banner and pop-up window
 fetchData(topMovieURL).then((data) => {
   fetchData(data.results[0]["url"]).then((top_movie_data) => {
@@ -166,6 +164,7 @@ fetchData(topMovieURL).then((data) => {
       "Movie summary",
     ];
 
+    // adding img element and url to the Top Movie banner
     const best_movie_img = document.createElement("img");
     best_movie_img.classList.add("popup_img");
     let new_url = top_movie_data["image_url"].slice(
@@ -175,6 +174,7 @@ fetchData(topMovieURL).then((data) => {
     best_movie_img.src = new_url;
     pop_window.appendChild(best_movie_img);
 
+    // adding movie specs to the pop-up window
     for (let detail in pop_window_details) {
       const item = document.createElement("li");
       const text = document.createElement("p");
@@ -184,6 +184,7 @@ fetchData(topMovieURL).then((data) => {
       details.appendChild(item);
     }
 
+    // creating and adding movie details to the banner
     const top_movie_image = document.getElementById("top-movie-img");
     const top_movie_title = document.getElementById("top-movie-title");
     const top_movie_paragraph = document.getElementById("top-movie-paragraph");
@@ -197,6 +198,7 @@ fetchData(topMovieURL).then((data) => {
     const close_btn = document.getElementById("close-btn");
     const play_btn = document.getElementById("play-btn");
 
+    // adding event listeners for the pop-up window buttons
     play_btn.addEventListener("click", function () {
       window_container.style.display = "block";
     });
@@ -217,13 +219,13 @@ const promises = [
 // Use Promise.all to wait for all promises to resolve
 Promise.all(promises)
   .then(() => {
-    console.log('All operations completed successfully');
+    console.log('All requests completed successfully');
   })
   .catch((error) => {
     console.error('Error:', error);
   });
 
-
+// to change the location on the page as you click the nav bar buttons
 function goToSection(sectionId) {
   window.location = sectionId;
 }
