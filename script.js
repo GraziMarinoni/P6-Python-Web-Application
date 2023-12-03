@@ -79,7 +79,7 @@ function carousel(imgURL, cat_name) {
   next.addEventListener("click", function () {showSlide(currentSlide + 1);
   });
 
-  // Initial display
+  // Initial slideshow display
   showSlide(currentSlide);
 }
 
